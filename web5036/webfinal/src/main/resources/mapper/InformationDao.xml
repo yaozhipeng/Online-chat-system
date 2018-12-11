@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.ncu.cs15.dao.InformationDao">
+    <insert id="add" parameterType="cn.edu.ncu.cs15.entity.Information">
+        INSERT INTO information (user_id, name, gender, motto, school, phone)
+        VALUES (#{information.userId}, #{information.name}, #{information.gender}, #{information.motto}, #{information.school}, #{information.phone})
+    </insert>
+
+    <update id="modify" parameterType="cn.edu.ncu.cs15.entity.Information">
+        UPDATE information
+        SET name = #{information.name}, gender = #{information.gender}, motto = #{information.motto}, school = #{information.school}, phone = #{information.phone}
+        WHERE user_id = #{information.userId}
+    </update>
+
+    <select id="queryById" parameterType="String" resultType="cn.edu.ncu.cs15.entity.Information">
+        SELECT *
+        FROM information
+        WHERE user_id = #{id}
+    </select>
+
+    <select id="queryByName" parameterType="String" resultType="cn.edu.ncu.cs15.entity.Information">
+        SELECT *
+        FROM information
+        WHERE name = #{name}
+    </select>
+
+    <select id="queryBySchool" parameterType="String" resultType="cn.edu.ncu.cs15.entity.Information">
+        SELECT *
+        FROM information
+        WHERE name = #{school}
+    </select>
+</mapper>

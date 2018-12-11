@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.ncu.cs15.dao.MessageDao">
+    <insert id="add" parameterType="cn.edu.ncu.cs15.entity.Message">
+        INSERT INTO message (to_id, from_id, content, time)
+        VALUES (#{message.toId}, #{message.fromId}, #{message.content}, #{message.time})
+    </insert>
+
+    <delete id="delete" parameterType="cn.edu.ncu.cs15.entity.Message">
+        DELETE FROM message
+        WHERE to_id = #{message.toId} and from_id = #{message.fromId} and content = #{message.content} and time = #{message.time}
+    </delete>
+
+    <select id="queryNewByFromId" resultType="cn.edu.ncu.cs15.entity.Message">
+        SELECT to_id, from_id, content, time
+        FROM message
+        WHERE from_id = #{fromId}
+        ORDER BY time
+        limit #{n}
+    </select>
+
+    <select id="queryNewByToId" resultType="cn.edu.ncu.cs15.entity.Message">
+        SELECT to_id, from_id, content, time
+        FROM message
+        WHERE to_id = #{toId}
+        ORDER BY time
+        limit #{n}
+    </select>
+
+    <select id="queryAll" resultType="cn.edu.ncu.cs15.entity.Message">
+        SELECT to_id, from_id, content, time
+        FROM message
+        WHERE to_id = #{toId} and from_id = #{fromId}
+    </select>
+</mapper>

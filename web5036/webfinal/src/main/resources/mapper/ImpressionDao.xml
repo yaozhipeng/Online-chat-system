@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.ncu.cs15.dao.ImpressionDao">
+    <insert id="add" parameterType="cn.edu.ncu.cs15.entity.Impression">
+        INSERT INTO impression (to_id, from_id, description)
+        VALUES (#{impression.toId}, #{impression.fromId}, #{impression.description})
+    </insert>
+
+    <delete id="delete">
+        DELETE FROM impression
+        WHERE from_id = #{fromId} and to_id = #{toId}
+    </delete>
+
+    <update id="modify" parameterType="cn.edu.ncu.cs15.entity.Impression">
+        UPDATE impression
+        SET description = #{impression.description}
+        WHERE from_id = #{impression.fromId} and to_id = #{impression.toId}
+    </update>
+
+    <select id="queryByFromId" parameterType="String" resultType="cn.edu.ncu.cs15.entity.Impression">
+        SELECT *
+        FROM impression
+        WHERE from_id = #{fromId}
+    </select>
+
+    <select id="queryByToId" parameterType="String" resultType="cn.edu.ncu.cs15.entity.Impression">
+        SELECT *
+        FROM impression
+        WHERE to_id = #{toId}
+    </select>
+
+    <select id="query" resultType="cn.edu.ncu.cs15.entity.Impression">
+        SELECT *
+        FROM impression
+        WHERE from_id = #{fromId} and to_id = #{toId}
+    </select>
+</mapper>

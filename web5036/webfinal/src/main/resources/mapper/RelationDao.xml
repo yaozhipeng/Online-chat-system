@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.ncu.cs15.dao.RelationDao">
+    <insert id="add" parameterType="cn.edu.ncu.cs15.entity.Relation">
+        INSERT INTO relation (to_id, from_id, state)
+        VALUES (#{relation.toId}, #{relation.fromId}, #{relation.state})
+    </insert>
+
+   <delete id="delete">
+      DELETE FROM relation
+      WHERE from_id = #{fromId} and to_id = #{toId}
+   </delete>
+
+    <update id="modifyState">
+        UPDATE relation
+        SET state = #{state}
+        WHERE from_id = #{fromId} and to_id = #{toId}
+    </update>
+
+    <select id="queryByFromId" parameterType="String" resultType="cn.edu.ncu.cs15.entity.Relation">
+        SELECT to_id, from_id, state
+        FROM relation
+        WHERE from_id = #{fromId}
+    </select>
+
+    <select id="queryByToId" parameterType="String" resultType="cn.edu.ncu.cs15.entity.Relation">
+        SELECT to_id, from_id, state
+        FROM relation
+        WHERE to_id = #{toId}
+    </select>
+</mapper>
