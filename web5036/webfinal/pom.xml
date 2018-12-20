@@ -48,7 +48,7 @@
             <version>1.2.3</version>
         </dependency>
 
-        <!-- 3.Servlet web -->
+        <!-- 3.Servlet controller -->
         <dependency>
             <groupId>taglibs</groupId>
             <artifactId>standard</artifactId>
@@ -104,7 +104,7 @@
             <artifactId>spring-tx</artifactId>
             <version>4.3.17.RELEASE</version>
         </dependency>
-        <!-- 3)Spring web -->
+        <!-- 3)Spring controller -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
