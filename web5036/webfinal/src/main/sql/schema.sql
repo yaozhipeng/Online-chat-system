@@ -14,14 +14,16 @@ create table information (
   gender  INT, -- 0女 1男
   habit VARCHAR(200), -- 签名
   address  VARCHAR(50), -- 学校
-  phone   VARCHAR(20), -- 电话
+  phone   VARCHAR(20) -- 电话
+
 );
 
 create table relation (
+  relationId INT PRIMARY KEY AUTO_INCREMENT,
   to_id   VARCHAR(50) NOT NULL,
   from_id VARCHAR(50) NOT NULL, -- from_id有to_id的好友
-  state   INT, -- 0未验证 --1已验证
-  PRIMARY KEY (to_id, from_id)
+  state   INT -- 0未验证 --1已验证
+  -- PRIMARY KEY (to_id, from_id)
 );
 
 create table message (
